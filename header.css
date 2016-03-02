@@ -1,0 +1,10 @@
+body{
+	background-image:url(ignasi_pattern_s.png);
+}
+.barre_recherche{
+	margin-top:11px;
+	margin-left:50px;
+}
+.nav_header{
+	background:red;
+}

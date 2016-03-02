@@ -1,0 +1,19 @@
+.header__block{
+	background:black;
+	border:2px solid black;
+	height:50px;
+}
+.header__block--index, .header__block--users{
+	background-color:black;
+	border:2px solid black;
+	display:inline-block;
+	height:48px;
+	margin-left:60px;
+	padding-top:14px;
+	text-decoration:none;
+	color:white;
+}
+.header__block--index:hover, .header__block--users:hover{
+	opacity:0.8;
+	text-decoration:none;
+}
