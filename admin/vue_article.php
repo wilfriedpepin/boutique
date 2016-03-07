@@ -2,6 +2,7 @@
 	session_start();
 	$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 	if(!empty($_GET['requete']) && $_GET['requete'] == 'order_id'){
+		// ici c'est ci l'ont souhaite remettre les id en ordre
 		$requete = $bdd->prepare('SELECT * FROM articles ORDER BY id');
 		$requete->execute();
 		$compteur = 1;
@@ -42,6 +43,7 @@
  			if(!empty($_GET['choix'])){
  				$choix = htmlspecialchars($_GET['choix']);
  				switch($choix){
+ 					// ici c'est pour trier le tableau du pnel admin comme on le souhaite en fonction des doénnée dans la table users
  					case 1:
  						$articles = $bdd->prepare('SELECT * FROM articles ORDER BY id');
  						break;
@@ -79,6 +81,7 @@
  			}
  			$articles->execute();
  			while($liste_articles = $articles->fetch()){
+ 				// ici on affiche les données sous forme de tableau
  				echo '<tr>';
  				echo '<td>'.$liste_articles['id'].'</td>';
  				echo '<td>'.$liste_articles['image'].'</td>';

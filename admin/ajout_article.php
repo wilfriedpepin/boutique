@@ -4,10 +4,13 @@ $bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 require_once('fonction_admin.php');
 if ((!empty($_POST['titre2']) || !empty($_POST['titre'])) &&!empty($_POST['tome'])&&!empty($_POST['image'])&&!empty($_POST['description'])&&!empty($_POST['reference'])&&!empty($_POST['prix'])&&!empty($_POST['categorie']))
 {
+	// si il ne manque aucun parametre
 	$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 	if(!empty($_POST['titre'])){
+		//si cet methode existe 
 		$nom = htmlspecialchars($_POST['titre']);
 	}else{
+		//sinon on prend celle ci
 		$nom = htmlspecialchars($_POST['titre2']);
 	}
 	$tome = htmlspecialchars($_POST['tome']);

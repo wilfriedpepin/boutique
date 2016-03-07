@@ -30,11 +30,13 @@ require_once('fonction_admin.php');
  			}else{$choix = 0;}
  		 	viewUsers($choix);
  		 	if(!empty($_GET['id']) && $_GET['action'] == "modifier"){
+ 		 		// ici vers la modification utilisateur
  		 		$id = htmlspecialchars($_GET['id']);
  		 		modificationUsers($id);
  		 		
  		 	}
  		 	if(!empty($_GET['id']) && $_GET['action'] == "supprimer"){
+ 		 		//ici vers la supression utilisareur
  		 		$id = htmlspecialchars($_GET['id']);
  		 		deleteUsers($id);
  		 		header('Location: vue_utilisateur.php');

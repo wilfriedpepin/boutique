@@ -6,6 +6,7 @@
 		$id = htmlspecialchars($_GET['idart']);
 	}
 	if(!empty($_POST['id'])){
+		// si l'id de l'article est rentrée on peut faire la suite qui modifiera ce qui est entrée dans les champs
 		if (!empty($_POST['titre'])){
 			$nom = htmlspecialchars($_POST['titre']);
 			$modification = $bdd->prepare('UPDATE articles SET nom = "'.$nom.'" WHERE id = "'.$id.'"');

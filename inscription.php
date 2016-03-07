@@ -2,14 +2,18 @@
 	session_start();
 	$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 	if(!empty($_POST['pseudo'])){
+		//ici si au moins le pseudo est entré dans le champs de formulaire
 		$pseudo = htmlspecialchars($_POST['pseudo']);
 		$test = $bdd->query('SELECT * FROM users WHERE pseudo ="'.$pseudo.'"');
 		$liste_pseudo = $test->fetch();
 		if(!empty($liste_pseudo)){
+			//si le pseudo n'existe pas
 			echo '<script>alert(\'Ce pseudo existe déjà\')</script>';
 		}else{
+			//si le pseudo existe
 		if (!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['pseudo'])&&!empty($_POST['mdp_confirm'])&&!empty($_POST['mdp'])&&!empty($_POST['email'])&&!empty($_POST['numtel'])&&!empty($_POST['adresse']))
 		{
+			// si tout les champs sont rentrée dans le formulaire
 			$nom = htmlspecialchars($_POST['nom']);
 			$prenom = htmlspecialchars($_POST['prenom']);
 			$pseudo = htmlspecialchars($_POST['pseudo']);
@@ -19,6 +23,7 @@
 			$numtel = htmlspecialchars($_POST['numtel']);
 			$adresse = htmlspecialchars($_POST['adresse']);
 			if ($mdp == $mdp_confirm){
+				//si les deux mots de passe sont identique on insert dans la bdd
 				$insertion = $bdd->prepare("INSERT INTO users(id,prenom,nom,pseudo,mdp,email,numtel,adresse) VALUES ('',:prenom,:nom,:pseudo,:mdp,:email,:numtel,:adresse)");
 				$insertion ->execute(array(
 					'prenom'=>$prenom,
@@ -35,10 +40,12 @@
 				}
 			}
 			if ($mdp != $mdp_confirm){
+				//si les deux mots de passe ne correspondent pas on afiche ce messahe d'erreur
 				echo '<script>alert(\'Les mots de passe ne correspondent pas!\');</script>';
 			}
 			
-		}else{ echo '<script>alert(\'il manque au moins un paramètre\')</script>';}
+		}else{ //si il manque au moins un champs
+			echo '<script>alert(\'il manque au moins un paramètre\')</script>';}
 	}
 }
 	
@@ -57,10 +64,7 @@
 	 ?>
 	<div class="container">
 		<div class="row body">
-			<aside class="col-md-1 description">
-				<script>alert('Coucou ca va la famille'); if(confirm(windows.reload();</script>
-			</aside>
-			<main class="col-md-11 ">
+			<main class="col-md-12 ">
 				<h1>INSCRIPTION</h1>
 				<form method="post">
 					<fieldset>

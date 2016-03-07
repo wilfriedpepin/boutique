@@ -2,6 +2,7 @@
 	echo '<div class="container-fluid">';
 		echo '<div class="row ">';
 			while ($listing = $liste->fetch()){
+				//ici on affiche tant qu'il y a encore des donnée dans la bdd 
 				echo '<div class="col-md-4 col-sm-6 col-xs-12 article">';
 					echo '<a href="vue_article.php?ref='.$listing['id'].'">';
 					echo '<img class="img-responsive image" src="'.$listing['image'].'" alt="lol"></a>';

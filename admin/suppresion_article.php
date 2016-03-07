@@ -2,6 +2,7 @@
 	
 	$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 	if (!empty($_GET['id_supp']) && $_GET['action'] == 'supprimerArticle'){
+		//si la procedure de suppression est emtamé
 	$supp_id = htmlspecialchars($_GET['id_supp']);
 	$suppression = $bdd->prepare('DELETE FROM articles WHERE id = "'.$supp_id.'"');
 	$suppression->execute();

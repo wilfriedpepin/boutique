@@ -9,6 +9,7 @@
 <body>
 	<?php 
 		require_once('header.php');
+		// ici on delare la connexion a la bdd
 		$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 	?>
 

@@ -2,6 +2,7 @@
 	session_start();
 	$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 	if(!empty($_GET['requete']) && $_GET['requete'] == 'order_id'){
+		// pour permettre de trier les id
 		$requete = $bdd->prepare('SELECT * FROM commande ORDER BY id');
 		$requete->execute();
 		$compteur = 1;
@@ -75,6 +76,7 @@
  			
  			while($liste_commande = $commande->fetch()){
  				$pseudo = $bdd->query('SELECT * FROM users WHERE id ="'.$liste_commande['id_users'].'"');
+ 				//Ici on afficle les commandes sous forme de tableau
  				$thePseudo = $pseudo->fetch();
  				echo '<tr>';
  				echo '<td>'.$liste_commande['id'].'</td>';

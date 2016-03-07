@@ -1,5 +1,6 @@
 <?php 
 function viewForm(){
+	//ici le formulaire d'ajout d'article
 	echo '
 	<form method="post">
 		<fieldset>
@@ -31,6 +32,7 @@ function viewForm(){
 
 
 function checkTitle($tableau,$titre){
+	//ici pour verifier si le titre existe deja dans le tableau session titreArticle visible dans la connexion
 	for ($i=0; $i < count($tableau); $i++) { 
 		if($tableau[$i] == $titre){
 			return true;
@@ -39,6 +41,7 @@ function checkTitle($tableau,$titre){
 	return false;
 }
 function viewUsers($choix){
+	// pour pouvoir afficher les donnée des utilisateur dans la bdd
 	$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 	if($choix != 0){
 		switch($choix){
@@ -87,12 +90,14 @@ function viewUsers($choix){
 }
 
 function deleteUsers($id){
+	// pour supprimer l'utilisateur
 	$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 	$supp_users = $bdd->prepare('DELETE FROM users WHERE id = '.$id);
 	$supp_users->execute();
  }
 
  function modificationUsers($id){
+ 	// Pouvoir modifier des données sur les utilisateur
  	$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
  	$modification = false;
  	viewForm();
@@ -146,6 +151,7 @@ function cat($option,$id){
 	}
 }
 function sCat($option,$id){
+	// Pour savoir si il a une sous_categorie
 	$bdd = new PDO('mysql:host=localhost;dbname=boutique','root','');
 	$select = $bdd->query('SELECT * FROM articles WHERE id="'.$id.'"');
 	$selected = $select->fetch();
